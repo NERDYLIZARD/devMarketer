@@ -23,3 +23,9 @@ const app = new Vue({
   el: '#app',
   data: {}
 });
+
+$(document).ready(function () {
+  $('.dropdown').hover(function (e) {
+    $(this).toggleClass('is-open');
+  });
+});

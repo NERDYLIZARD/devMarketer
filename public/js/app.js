@@ -810,6 +810,12 @@ var app = new Vue({
   data: {}
 });
 
+$(document).ready(function () {
+  $('.dropdown').hover(function (e) {
+    $(this).toggleClass('is-open');
+  });
+});
+
 /***/ }),
 /* 10 */
 /***/ (function(module, exports, __webpack_require__) {
