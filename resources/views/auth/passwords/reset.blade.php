@@ -14,7 +14,7 @@
         <div class="card-content">
           <h1 class="title">Reset Your Password</h1>
 
-          <form action="" method="POST" role="form">
+          <form action="{{route('password.reset')}}" method="POST" role="form">
             {{csrf_field()}}
             <input type="hidden" name="token" value="{{ $token }}">
             <div class="field">
