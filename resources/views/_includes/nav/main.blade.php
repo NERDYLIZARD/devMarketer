@@ -1,7 +1,7 @@
 <nav class="nav has-shadow" >
   <div class="container">
     <div class="nav-left">
-      <a class="nav-item is-paddingless" href="{{route('home')}}">
+      <a class="nav-item is-paddingless" href="/">
         <img src="{{asset('images/devmarketer-logo.png')}}" alt="DevMarketer logo">
       </a>
       <a class="nav-item is-tab is-hidden-mobile m-l-10">Learn</a>
