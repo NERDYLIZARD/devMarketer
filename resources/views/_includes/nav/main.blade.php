@@ -22,40 +22,37 @@
         <a href="{{route('register')}}" class="nav-item is-tab">Join the Community</a>
       @else
         <div class="dropdown">
-          <button class="nav-item is-tab dropdown-toggle">
-            <figure class="image is-16x16" style="margin-right: 8px;">
-              <img src="http://bulma.io/images/jgthms.png">
-            </figure>
-
-          </button>
           <button class="dropdown is-aligned-right nav-item is-tab" >
-            {{--Hey {{ Auth::user()->name }}--}}
-            <ul class="dropdown-menu" style="overflow: visible;">
-              <li><a href="#">
-                      <span class="icon">
-                        <i class="fa fa-fw fa-user-circle-o m-r-5"></i>
-                      </span>Profile
+            Hey {{ Auth::user()->name }}
+            <ul class="dropdown-menu">
+              <li>
+                <a href="#">
+                  <span class="icon">
+                    <i class="fa fa-fw fa-user-circle-o m-r-5"></i>
+                  </span>Profile
                 </a>
               </li>
-              <li><a href="#">
-                      <span class="icon">
-                        <i class="fa fa-fw fa-bell m-r-5"></i>
-                      </span>Notifications
+              <li>
+                <a href="#">
+                  <span class="icon">
+                    <i class="fa fa-fw fa-bell m-r-5"></i>
+                  </span>Notifications
                 </a>
               </li>
-              <li><a href="#">
-                      <span class="icon">
-                        <i class="fa fa-fw fa-cog m-r-5"></i>
-                      </span>Settings
+              <li>
+                <a href="{{route('manage.dashboard')}}">
+                  <span class="icon">
+                    <i class="fa fa-fw fa-cog m-r-5"></i>
+                  </span>Manage
                 </a>
               </li>
               <li class="seperator"></li>
               <li>
                 <a href="{{route('logout')}}" onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">
-                      <span class="icon">
-                        <i class="fa fa-fw fa-sign-out m-r-5"></i>
-                      </span>
+                  <span class="icon">
+                    <i class="fa fa-fw fa-sign-out m-r-5"></i>
+                  </span>
                   Logout
                 </a>
                 @include('_includes.forms.logout')
