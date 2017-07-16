@@ -19,10 +19,10 @@ Vue.use(Buefy);
 
 // Vue.component('example', require('./components/Example.vue'));
 
-const app = new Vue({
-  el: '#app',
-  data: {}
-});
+// const app = new Vue({
+//   el: '#app',
+//   data: {}
+// });
 
 $(document).ready(function () {
   $('.dropdown').hover(function (e) {
