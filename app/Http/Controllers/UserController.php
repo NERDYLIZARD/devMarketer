@@ -109,7 +109,7 @@ class UserController extends Controller
         Session::flash('error', 'There was a problem saving the updated user info to the database. Try again later.');
         return redirect()->back();
       }
-      return redirect()->route('users.show', $user->id);
+      return redirect()->route('users.show', $id);
     }
 
     /**

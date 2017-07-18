@@ -8,7 +8,7 @@
       </div> <!-- end of column -->
 
       <div class="column">
-        <a href="{{route('users.edit', $user->id)}}" class="button is-primary is-pulled-right"><i class="fa fa-user m-r-10"></i> Edit User</a>
+        <a href="{{route('users.edit', $user->id)}}" class="button is-primary is-pulled-right"><i class="fa fa-edit m-r-10"></i> Edit User</a>
       </div>
     </div>
     <hr>

@@ -10,7 +10,7 @@
         <a href="{{route('users.create')}}" class="button is-primary is-pulled-right"><i class="fa fa-user-plus m-r-10"></i> Create New User</a>
       </div>
     </div>
-    <hr class="m-t-0">
+    <hr>
 
     <div class="card">
       <div class="card-content">
