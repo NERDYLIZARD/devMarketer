@@ -23,6 +23,7 @@ Route::prefix('manage')
     Route::get('/', 'ManageController@index');
     Route::get('/dashboard', 'ManageController@dashboard')->name('manage.dashboard');
     Route::resource('/users', 'UserController');
+    Route::resource('/roles', 'RoleController', ['except' => 'destroy']);
     Route::resource('/permissions', 'PermissionController', ['except' => 'destroy']);
   });
 

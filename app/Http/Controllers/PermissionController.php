@@ -41,7 +41,7 @@ class PermissionController extends Controller
       if ($request->permission_type == 'basic') {
         $this->validate($request, [
           'display_name' => 'required|max:255',
-          'name' => 'required|max:255|alphadash|unique:permissions,name',
+          'name' => 'required|max:255|alpha_dash|unique:permissions,name',
           'description' => 'sometimes|max:255',
         ]);
         $permission = new Permission([
