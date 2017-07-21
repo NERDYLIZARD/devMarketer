@@ -18,7 +18,6 @@
               <input type="text" class="input" name="name" id="name" required>
             </p>
           </div>
-
           <div class="field">
             <label for="email" class="label">Email:</label>
             <p class="control">
@@ -26,12 +25,29 @@
             </p>
           </div>
 
-          <div class="field">
-            <label for="password" class="label">Password</label>
-            <p class="control">
-              <input type="password" class="input" name="password" id="password" v-if="!auto_password" placeholder="Manually give a password to this user" required>
-              <b-checkbox name="auto_generate" class="m-t-15" v-model="auto_password">Auto Generate Password</b-checkbox>
-            </p>
+          <div class="columns">
+            <div class="column">
+              <div class="field">
+                <label for="password" class="label">Password</label>
+                <p class="control">
+                  <input type="password" class="input m-b-15" name="password" id="password" v-if="!auto_password" placeholder="Manually give a password to this user" required>
+                  <b-checkbox name="auto_generate" v-model="auto_password">Auto Generate Password</b-checkbox>
+                </p>
+              </div>
+            </div>
+            <div class="column">
+              <div class="field">
+                <label class="label">Roles:</label>
+                <b-checkbox-group v-model="roles">
+                  @foreach($roles as $role)
+                    <div class="field">
+                      <b-checkbox :custom-value="{{$role->id}}">{{$role->display_name}}</b-checkbox>
+                    </div>
+                  @endforeach
+                </b-checkbox-group>
+              </div>
+            </div>
+            <input type="hidden" name="roles" :value="roles">
           </div>
 
           <button class="button is-primary is-outlined">Create User</button>
@@ -47,7 +63,8 @@
     var app = new Vue({
       el: '#app',
       data: {
-        auto_password: true
+        auto_password: true,
+        roles: [{!! old('roles') ? old('roles') : '' !!}],
       }
     });
   </script>

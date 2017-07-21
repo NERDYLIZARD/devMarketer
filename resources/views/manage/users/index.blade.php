@@ -14,7 +14,7 @@
 
     <div class="card">
       <div class="card-content">
-        <table class="table is-narrow">
+        <table class="table is-narrow m-b-0">
           <thead>
           <tr>
             <th>id</th>
@@ -32,7 +32,10 @@
               <td>{{$user->name}}</td>
               <td>{{$user->email}}</td>
               <td>{{$user->created_at->toFormattedDateString()}}</td>
-              <td><a href="{{route('users.edit', $user->id)}}"><i class="fa fa-edit"></i></a></td>
+              <td>
+                <a href="{{route('users.show', $user->id)}}"><i class="fa fa-eye"></i></a>
+                <a class="m-l-10" href="{{route('users.edit', $user->id)}}"><i class="fa fa-edit"></i></a>
+              </td>
             </tr>
           @endforeach
           </tbody>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -26,7 +28,8 @@ class UserController extends Controller
      */
     public function create()
     {
-      return view('manage.users.create');
+      $roles = Role::all();
+      return view('manage.users.create', ["roles" => $roles]);
     }
 
     /**
@@ -56,6 +59,9 @@ class UserController extends Controller
         Session::flash('error', 'Sorry a problem occurred while creating this user. Try again later.');
         return redirect()->back();
       }
+      if ($request->roles)
+        $user->syncRoles(explode(',', $request->roles));
+      Session::flash('success', 'User has been successfully added');
       return redirect()->route('users.show', $user->id);
     }
 
@@ -67,7 +73,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-      $user = User::findOrFail($id);
+      $user = User::where('id', $id)->with('roles')->first();
       return view('manage.users.show', ['user' => $user]);
     }
 
@@ -79,8 +85,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-      $user = User::findOrFail($id);
-      return view('manage.users.edit', ['user' => $user]);
+      $user = User::where('id', $id)->with('roles')->first();
+      $roles = Role::all();
+      return view('manage.users.edit', ['user' => $user, 'roles' => $roles]);
     }
 
     /**
@@ -109,6 +116,9 @@ class UserController extends Controller
         Session::flash('error', 'There was a problem saving the updated user info to the database. Try again later.');
         return redirect()->back();
       }
+      if ($request->roles)
+        $user->syncRoles(explode(',', $request->roles));
+      Session::flash('success', 'User '. $user->name . ' has been successfully updated');
       return redirect()->route('users.show', $id);
     }
 

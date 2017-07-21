@@ -19,13 +19,23 @@
           <label for="name" class="label">Name</label>
           <pre>{{$user->name}}</pre>
         </div>
-
         <div class="field">
-          <div class="field">
-            <label for="email" class="label">Email</label>
-            <pre>{{$user->email}}</pre>
-          </div>
+          <label for="email" class="label">Email</label>
+          <pre>{{$user->email}}</pre>
         </div>
+        <div class="field">
+          <label for="role" class="label">Role</label>
+          <ul>
+            @if (count($user->roles))
+              @foreach($user->roles as $role)
+                <li>{{$role->display_name}} <em>{{$role->name}}</em></li>
+              @endforeach
+            @else
+              <p>User has no roles</p>
+            @endif
+          </ul>
+        </div>
+
       </div>
     </div>
   </div>
