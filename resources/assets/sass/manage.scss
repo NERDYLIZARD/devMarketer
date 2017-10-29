@@ -19,6 +19,11 @@
 }
 
 
+// main menu
+.menu-list a.has-submenu.is-active {
+  background-color: lightgray;
+}
+
 .submenu {
   max-height: 0;
   overflow: hidden;

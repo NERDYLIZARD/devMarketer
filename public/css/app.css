@@ -16739,6 +16739,10 @@ a.is-muted:hover {
   margin: 10px 25px;
 }
 
+.menu-list a.has-submenu.is-active {
+  background-color: lightgray;
+}
+
 .submenu {
   max-height: 0;
   overflow: hidden;
