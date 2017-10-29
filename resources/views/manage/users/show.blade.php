@@ -26,13 +26,11 @@
         <div class="field">
           <label for="role" class="label">Role</label>
           <ul>
-            @if (count($user->roles))
-              @foreach($user->roles as $role)
-                <li>{{$role->display_name}} <em>{{$role->name}}</em></li>
-              @endforeach
-            @else
+            @forelse($user->roles as $role)
+              <li>{{$role->display_name}} <em>{{$role->name}}</em></li>
+            @empty
               <p>User has no roles</p>
-            @endif
+            @endforelse
           </ul>
         </div>
 
