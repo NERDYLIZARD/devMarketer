@@ -38,13 +38,11 @@
             <div class="column">
               <div class="field">
                 <label class="label">Roles:</label>
-                <b-checkbox-group v-model="roles">
-                  @foreach($roles as $role)
-                    <div class="field">
-                      <b-checkbox :custom-value="{{$role->id}}">{{$role->display_name}}</b-checkbox>
-                    </div>
-                  @endforeach
-                </b-checkbox-group>
+                @foreach($roles as $role)
+                  <div class="field">
+                    <b-checkbox v-model="roles" :native-value="{{$role->id}}">{{$role->display_name}}</b-checkbox>
+                  </div>
+                @endforeach
               </div>
             </div>
             <input type="hidden" name="roles" :value="roles">

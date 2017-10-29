@@ -15,10 +15,8 @@
 
           {{--radio buttons for basic/crud--}}
           <div class="block">
-            <b-radio-group v-model="permissionType">
-              <b-radio name="permission_type" value="basic">Basic Permission</b-radio>
-              <b-radio name="permission_type" value="crud">CRUD Permission</b-radio>
-            </b-radio-group>
+            <b-radio v-model="permissionType" name="permission_type" native-value="basic">Basic Permission</b-radio>
+            <b-radio v-model="permissionType" name="permission_type" native-value="crud">CRUD Permission</b-radio>
           </div>
 
           {{--basic--}}
@@ -53,20 +51,18 @@
             </div>
             <div class="columns m-t-10">
               <div class="column is-one-quarter">
-                <b-checkbox-group v-model="crudSelected">
                   <div class="field">
-                    <b-checkbox custom-value="create">Create</b-checkbox>
+                    <b-checkbox v-model="crudSelected" native-value="create">Create</b-checkbox>
                   </div>
                   <div class="field">
-                    <b-checkbox custom-value="read">Read</b-checkbox>
+                    <b-checkbox v-model="crudSelected" native-value="read">Read</b-checkbox>
                   </div>
                   <div class="field">
-                    <b-checkbox custom-value="update">Update</b-checkbox>
+                    <b-checkbox v-model="crudSelected" native-value="update">Update</b-checkbox>
                   </div>
                   <div class="field">
-                    <b-checkbox custom-value="delete">Delete</b-checkbox>
+                    <b-checkbox v-model="crudSelected" native-value="delete">Delete</b-checkbox>
                   </div>
-                </b-checkbox-group>
               </div>
               {{--hidden checkbox input--}}
               <input type="hidden" name="crud_selected" :value="crudSelected"/>

@@ -32,13 +32,11 @@
           </div>
           <div class="field">
             <label for="permissions" class="label">Permissions:</label>
-            <b-checkbox-group id="permissions" v-model="permissionsSelected">
-              @foreach($permissions as $permission)
-                <div class="field">
-                  <b-checkbox :custom-value="{{$permission->id}}">{{$permission->display_name}} <em>{{$permission->name}}</em></b-checkbox>
-                </div>
-              @endforeach
-            </b-checkbox-group>
+            @foreach($permissions as $permission)
+              <div class="field">
+                <b-checkbox v-model="permissionsSelected" :native-value="{{$permission->id}}">{{$permission->display_name}} <em>{{$permission->name}}</em></b-checkbox>
+              </div>
+            @endforeach
           </div>
           <input type="hidden" name="permissions" :value="permissionsSelected"/>
           <button class="button is-primary is-outlined m-t-0">Create Role</button>
