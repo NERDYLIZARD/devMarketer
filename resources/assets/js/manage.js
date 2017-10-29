@@ -2,18 +2,17 @@
  * Created by on 29-Oct-17.
  */
 
-const accordions = document.getElementsByClassName('has-submenu')
+const accordions = document.querySelectorAll('.has-submenu')
 
-for (let i = 0; i < accordions.length; i++) {
-
+accordions.forEach(accordion => {
   // if class main menu is active, open class menu onload
-  if (accordions[i].classList.contains('is-active')) {
-    const submenu = accordions[i].nextElementSibling
+  if (accordion.classList.contains('is-active')) {
+    const submenu = accordion.nextElementSibling
     submenu.style.maxHeight = submenu.scrollHeight + 'px'
     submenu.style.margin = '.75em'
   }
 
-  accordions[i].onclick = function () {
+  accordion.onclick = function () {
     this.classList.toggle('is-active')
 
     const submenu = this.nextElementSibling
@@ -30,5 +29,5 @@ for (let i = 0; i < accordions.length; i++) {
     }
   }
 
-}
+})
 

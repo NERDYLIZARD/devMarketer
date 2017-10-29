@@ -29904,18 +29904,17 @@ exports.clearImmediate = clearImmediate;
  * Created by on 29-Oct-17.
  */
 
-var accordions = document.getElementsByClassName('has-submenu');
+var accordions = document.querySelectorAll('.has-submenu');
 
-for (var i = 0; i < accordions.length; i++) {
-
+accordions.forEach(function (accordion) {
   // if class main menu is active, open class menu onload
-  if (accordions[i].classList.contains('is-active')) {
-    var submenu = accordions[i].nextElementSibling;
+  if (accordion.classList.contains('is-active')) {
+    var submenu = accordion.nextElementSibling;
     submenu.style.maxHeight = submenu.scrollHeight + 'px';
     submenu.style.margin = '.75em';
   }
 
-  accordions[i].onclick = function () {
+  accordion.onclick = function () {
     this.classList.toggle('is-active');
 
     var submenu = this.nextElementSibling;
@@ -29930,7 +29929,7 @@ for (var i = 0; i < accordions.length; i++) {
       submenu.style.margin = '.75em';
     }
   };
-}
+});
 
 /***/ })
 /******/ ]);
