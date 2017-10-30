@@ -3,6 +3,14 @@
  */
 
 const accordions = document.querySelectorAll('.has-submenu')
+const adminSlideButton = document.querySelector('#admin-slideout-button')
+
+
+adminSlideButton.onclick = function () {
+  this.classList.toggle('is-active')
+  document.querySelector('#admin-side-menu').classList.toggle('is-active')
+}
+
 
 accordions.forEach(accordion => {
   // if class main menu is active, open class menu onload
