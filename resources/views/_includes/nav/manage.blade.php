@@ -5,6 +5,13 @@
       <li><a href="{{route('manage.dashboard')}}" class="{{Nav::isRoute('manage.dashboard')}}">Dashboard</a></li>
     </ul>
 
+    <p class="menu-label">
+      Content
+    </p>
+    <ul class="menu-list">
+      <li><a href="{{route('posts.index')}}" class="{{Nav::isResource('posts', 2)}}">Blog Posts</a></li>
+    </ul>
+
     <p class="menu-label">Administration</p>
     <ul class="menu-list">
       <li><a href="{{route('users.index')}}" class="{{Nav::isResource('users')}}">Manage Users</a></li>

@@ -25,6 +25,7 @@ Route::prefix('manage')
     Route::resource('/users', 'UserController');
     Route::resource('/roles', 'RoleController', ['except' => 'destroy']);
     Route::resource('/permissions', 'PermissionController', ['except' => 'destroy']);
+    Route::resource('/posts', 'PostController');
   });
 
 Route::get('/home', 'HomeController@index')->name('home');
