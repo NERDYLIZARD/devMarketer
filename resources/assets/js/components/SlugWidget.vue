@@ -59,15 +59,31 @@
     },
     data() {
       return {
-        slug: this.convertTitle(),
+        slug: this.setSlug(this.title),
         customSlug: '',
         isEditing: false,
         wasEdited: false,
+        api_token: this.$root.api_token
       }
     },
     methods: {
-      convertTitle() {
-        return Slug(this.title)
+      setSlug(title) {
+        // for the first call from vue
+        if (!title || !this.api_token)
+          return
+
+        // get unique slug
+        axios.get('/api/posts/unique', {
+          params: {
+            slug: Slug(title),
+            api_token: this.api_token
+          }})
+          .then(response => {
+            this.slug = response.data
+          })
+          .catch(error => {
+            console.log(error)
+          })
       },
       editSlug() {
         this.isEditing = true
@@ -75,26 +91,26 @@
         this.$emit('edit', this.slug)
       },
       saveSlug() {
-        if (this.customSlug !== this.slug)
+        if (this.customSlug !== this.slug) {
           this.wasEdited = true
+          this.setSlug(this.customSlug)
+        }
         this.isEditing = false
-        this.slug = Slug(this.customSlug)
         this.$emit('save', this.slug)
       },
       resetEditing() {
         this.isEditing = false
         this.wasEdited = false
-        this.slug = this.convertTitle()
+        this.setSlug(this.title)
         this.$emit('reset', this.slug)
       },
 
     },
     watch: {
-      title: _.debounce(function() {
+      title: _.debounce(function(title) {
         if (!this.wasEdited)
-          this.slug = this.convertTitle()
-          // ajax call check the unqueness
-      }, 250),
+          this.setSlug(title)
+      }, 500),
       slug: function() {
         this.$emit('change', this.slug)
       }

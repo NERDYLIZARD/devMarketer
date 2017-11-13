@@ -22,8 +22,8 @@ class CreatePostsTable extends Migration
             $table->longText('content');
             $table->integer('status')->default(1);
             $table->integer('type')->unsigned()->default(1);
-            $table->bigInteger('comment_count')->unsigned();
-            $table->dateTime('published_at');
+            $table->bigInteger('comment_count')->unsigned()->default(0);
+            $table->dateTime('published_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
 
             $table->foreign('author_id')
